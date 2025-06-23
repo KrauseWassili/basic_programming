@@ -29,7 +29,7 @@ public class BookArray {
     public String searchBookByTitel(String titel) {
         String res = "";
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i].getAuthor().contains(titel)) {
+            if (arr[i].getTitle().contains(titel)) {
                 res += arr[i] + "\n";
             }
         }
