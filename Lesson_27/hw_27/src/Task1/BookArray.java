@@ -20,7 +20,7 @@ public class BookArray {
         String res = "";
         for (int i = 0; i < arr.length; i++) {
             if(arr[i].getAuthor().contains(author)) {
-                res += arr[i] + "\n";
+                res += arr[i] + System.lineSeparator();
             }
         }
         return res;
