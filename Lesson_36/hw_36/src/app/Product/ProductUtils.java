@@ -1,4 +1,4 @@
-package app;
+package app.Product;
 
 import app.Compare.*;
 

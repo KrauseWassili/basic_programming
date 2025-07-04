@@ -1,6 +1,6 @@
 package app.Compare;
 
-import app.Product;
+import app.Product.Product;
 
 import java.util.Comparator;
 

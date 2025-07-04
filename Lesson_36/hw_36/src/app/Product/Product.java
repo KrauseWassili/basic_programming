@@ -1,4 +1,4 @@
-package app;
+package app.Product;
 
 public class Product {
     String name;
