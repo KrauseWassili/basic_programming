@@ -30,6 +30,7 @@ public class Main {
 
         System.out.println("Номер разыскиваемого продукта: " + productList.indexOf(searchedProduct));
 
-
+        productList.addByIndex(searchedProduct,3);
+        System.out.println(productList);
     }
 }

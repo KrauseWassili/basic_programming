@@ -7,6 +7,24 @@ public class MyLinkedList implements MyList {
     private int size = 0;
 
 
+    @Override
+    public void addByIndex(Product product, int index) {
+        if (index < 0) {
+            Node node = new Node(null, product, head);
+            node.prev = node;
+            head = node;
+            size++;
+        } else if (index >= size) {
+            add(product);
+        } else {
+            Node prevNode = getNodeByIndex(index - 1);
+            Node currentNode = getNodeByIndex(index);
+            Node node = new Node(prevNode, product, currentNode);
+            prevNode.next = node;
+            currentNode.prev = node;
+            size++;
+        }
+    }
 
     @Override
     public void add(Product product) {
