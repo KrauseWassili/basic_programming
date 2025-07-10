@@ -11,18 +11,18 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        /*class MyIterator implements Iterator<E>{
+        class MyIterator implements Iterator<E>{
             static int currentIndex = 0;
 
             @Override
             public boolean hasNext() {
-                return array[currentIndex]!=null;
+                return currentIndex<size;
             }
 
             @Override
             public E next() {
                 if (array[currentIndex]!=null) {
-                    E value =  array[currentIndex];
+                    E value =  (E)array[currentIndex];
                     currentIndex++;
                     return value;
                 } else {
@@ -30,10 +30,7 @@ public class MyArrayList<E> implements MyList<E> {
                 }
             }
         }
-
-
-        return new MyIterator();*/
-        return null;
+        return new MyIterator();
     }
 
     @Override
