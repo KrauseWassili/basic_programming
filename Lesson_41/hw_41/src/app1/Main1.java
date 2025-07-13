@@ -2,7 +2,7 @@
 1. Дан лист String. Необходимо определить, есть ли в данном листе повторяющиеся строки.
 */
 
-package app;
+package app1;
 
 import java.util.*;
 

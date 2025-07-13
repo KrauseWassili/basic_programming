@@ -2,7 +2,7 @@
 4. [по желанию] Дано два списка с Person необходимо получить Set с персонами,
 которые присутствуют и в том и в другом списке
 */
-package app;
+package app4;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -4,7 +4,7 @@
 который удалит из этой строки повторяющиеся имена.
 Т.е. например, в случае строки  “Jack,John,Nick,John” вернет строку  с именами  Jack,John,Nick
  */
-package app;
+package app2;
 
 import java.util.*;
 
