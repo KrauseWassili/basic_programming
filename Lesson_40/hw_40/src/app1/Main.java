@@ -19,7 +19,8 @@ public class Main {
 
 
         Iterator<Person> iterator = linkedList.iterator();
-
+        //Объект класса, реализующий интерфейс.
+//Данный объект класса,
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }

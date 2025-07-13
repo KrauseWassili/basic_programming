@@ -18,16 +18,25 @@ public class ProductUtils {
     static Comparator<Product> compareByName = new Comparator<>() {
         @Override
         public int compare(Product o1, Product o2) {
-            return o1.getName().compareTo(o2.getName());
+            return o1.name.compareTo(o2.name);
         }
     };
-    static Comparator<Product> compareByPrice = new Comparator<>() {
+    static Comparator<Product> compareByPriceAscending = new Comparator<>() {
         @Override
         public int compare(Product o1, Product o2) {
-            return Double.compare(o1.getPrice(), o2.getPrice());
+            return Double.compare(o1.price, o2.price);
         }
     };
-    static Comparator<Product> compareByQuantity = new Comparator<>() {
+    /*
+    static Comparator<Product> compareByPriceDescending = new Comparator<Product>() {
+        @Override
+        public int compare(Product o1, Product o2) {
+            return Double.compare(o1.price, o2.price);
+        }
+    }.reversed();
+    */
+    static Comparator<Product> compareByPriceDescending = compareByPriceAscending.reversed();
+    static Comparator<Product> compareByQuantity = new Comparator<Product>() {
         @Override
         public int compare(Product o1, Product o2) {
             return Integer.compare(o1.getQuantity(), o2.getQuantity());
@@ -47,12 +56,15 @@ public class ProductUtils {
                 Collections.sort(productList, compareByName);
                 break;
             case 2:
-                Collections.sort(productList, compareByPrice);
+                Collections.sort(productList, compareByPriceAscending);
                 break;
             case 3:
+                Collections.sort(productList, compareByPriceDescending);
+                break;
+                case 4:
                 Collections.sort(productList, compareByRating);
                 break;
-            case 4:
+            case 5:
                 Collections.sort(productList, compareByQuantity);
                 break;
             default:

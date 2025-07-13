@@ -18,7 +18,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Выберите критерий сортировки:\n 1. наименование\n 2. цена\n 3. рейтинг\n 4. количество\n 0. завершить");
+            System.out.println("Выберите критерий сортировки:\n 1. наименование\n 2. цена по возрастанию\n 3. цена по убыванию\n 4. рейтинг\n 5. количество\n 0. завершить");
             int mode = scanner.nextInt();
             if (mode >= 1 && mode <= 4) {
                 ProductUtils.sortBy(mode);
