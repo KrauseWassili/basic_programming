@@ -34,6 +34,12 @@ public class Main4 {
 
     public static Set<Person> searchForMach(List<Person> personList1, List<Person> personList2){
         Set<Person> personSet = new HashSet<>(personList1);
+        personSet.retainAll(personList2);
+        return personSet;
+    }
+/*
+    public static Set<Person> searchForMach(List<Person> personList1, List<Person> personList2){
+        Set<Person> personSet = new HashSet<>(personList1);
         Set<Person> res = new HashSet<>();
         for(Person person: personList2){
             if(personSet.contains(person)){
@@ -42,4 +48,6 @@ public class Main4 {
         }
         return res;
     }
+
+ */
 }

@@ -13,9 +13,24 @@ public class Main2 {
         String string = "Jack,John,Nick,John";
 
         System.out.println(string);
-        System.out.println(removeDuplicationFromString(string));
+        System.out.println("----------------------------------");
+        System.out.println(removeDuplications(string));
     }
 
+
+    public static String removeDuplications(String string){
+
+        String [] words = string.split(",");
+
+        Set<String> set = new HashSet<>();
+        for (String word:words){
+            set.add(word);
+        }
+        return String.join(",", set);
+      //  HashSet<String> strings = new HashSet<>(Arrays.asList(words));
+
+    }
+/*
     public static String removeDuplicationFromString(String string) {
         return setToString(stringToSet(string));
     }
@@ -45,5 +60,5 @@ public class Main2 {
             }
         }
         return res;
-    }
+    }*/
 }
