@@ -14,7 +14,6 @@
 package app1;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,7 +38,7 @@ public class Main {
             System.out.println("\nВыберите критерий сортировки:\n 1. id\n 2. бренд\n 3. год выпуска\n 4. цена по возрастанию\n 5. цена по убыванию\n 0. завершить");
             int mode = scanner.nextInt();
             if (mode >= 1 && mode <= 5) {
-                SortAutos.sortBy(autoList,mode);
+                sortBy(autoList,mode);
                 System.out.println(autoList);
             }else if (mode <0 || mode > 5){
                 System.out.println(mode + "- неверный критерий!");
@@ -48,6 +47,36 @@ public class Main {
         }
     }
 
+    public static void sortBy(List<Auto> autoList, int criterion) {
+        switch (criterion) {
+            case 1:
+                autoList.sort((Auto a1, Auto a2) -> {
+                    return Integer.compare(a1.getId(), a2.getId());
+                });
+                break;
+            case 2:
+                autoList.sort((Auto a1, Auto a2) -> {
+                    return a1.getBrand().compareTo(a2.getBrand());
+                });
+                break;
+            case 3:
+                autoList.sort((Auto a1, Auto a2) -> {
+                    return Integer.compare(a1.getYear(), a2.getYear());
+                });
+                break;
+            case 4:
+                autoList.sort((Auto a1, Auto a2) -> {
+                    return Double.compare(a1.getPrice(), a2.getPrice());
+                });
+                break;
+            case 5:
+                autoList.sort((Auto a1, Auto a2) -> {
+                    return Double.compare(a2.getPrice(), a1.getPrice());
+                });
+                break;
+            default:
+        }
+    }
 
 
 }
