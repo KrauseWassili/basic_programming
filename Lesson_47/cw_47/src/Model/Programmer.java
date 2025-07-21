@@ -1,7 +1,9 @@
-package app;
+package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Programmer {
     private String name;
@@ -20,6 +22,7 @@ public class Programmer {
         this.tasks = Arrays.asList(tasks);
     }
 
+
     public String getName() {
         return name;
     }
@@ -29,11 +32,15 @@ public class Programmer {
     }
 
     public List<Task> getTasks() {
-        return tasks;
+        return new ArrayList<>(tasks);
     }
 
     @Override
     public String toString() {
-        return name + " from " + city;
+        return name + "(" + city + ")  " + System.lineSeparator()
+                + tasks.stream()
+                .map(t->t.toString())
+                .collect(Collectors.joining(System.lineSeparator()+"     ","Tasks[","]"));
+
     }
 }

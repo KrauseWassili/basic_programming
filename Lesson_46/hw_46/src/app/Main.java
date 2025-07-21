@@ -19,6 +19,7 @@ daysInProcessing у них больше 5 и статус не “finish”
 package app;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -104,12 +105,15 @@ public class Main {
                 .filter(p -> p.getCity().equals("Berlin"))
                 .flatMap(p -> p.getTasks().stream())
                 .filter(t -> !t.getStatus().equals("finished"))
-                .sorted((t1, t2) -> t1.getDaysInProcessing().compareTo(t2.getDaysInProcessing()))
+                //.sorted((t1, t2) -> t1.getDaysInProcessing().compareTo(t2.getDaysInProcessing()))
+                .sorted(Comparator.comparing(Task::getDaysInProcessing))
                 .toList();
-        System.out.println(taskList1);
+        taskList1.forEach(System.out::println);
 
         System.out.println("\n3. Сформировать список сет задач, которые относятся к программистам не из Berlin,\n" +
                 "daysInProcessing у них больше 5 и статус не “finish”");
+
+        //Predicate<Task> notFinished =
 
         Set<Task> taskSet1 = programmerList.stream()
                 .filter(p -> !p.getCity().equals("Berlin"))
@@ -122,11 +126,35 @@ public class Main {
         System.out.println("\n4 (Сложная**, по желанию)\n" +
                 "Сформировать Map<Task, Programmer> где ключ, задача, значение - программист, ответственный за задачу");
 
-        Map<Task, Programmer> programmerMap2 = programmerList.stream()
+       /* Map<Task, Programmer> programmerMap2 = programmerList.stream()
                 .map(p -> taskMap(p.getTasks(), p))
                 .flatMap(m -> m.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));*/
+
+        class TaskWithProgrammer {
+            private Task task;
+            private Programmer programmer;
+
+            public TaskWithProgrammer(Task task, Programmer programmer) {
+                this.task = task;
+                this.programmer = programmer;
+            }
+        }
+
+        Map<Task, Programmer> programmerMap2 = programmerList.stream()
+                        .flatMap(p->p.getTasks().stream()
+                                .map(t-> new TaskWithProgrammer(t,p)))
+                                .collect(Collectors.toMap(t->t.task,t->t.programmer));
+
+
+        programmerMap2.forEach((k,v)->System.out.println(k+":"+v));
+
+
+        Map<Task, Programmer> map = programmerList.stream()
+                .flatMap(p -> p.getTasks().stream().map(task -> Map.entry(task, p)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        System.out.println(programmerMap2);
+
+
     }
 
     public static Map<Task, Programmer> taskMap(List<Task> taskList, Programmer programmer) {
