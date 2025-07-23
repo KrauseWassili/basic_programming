@@ -1,4 +1,4 @@
-package app1.exceptions;
+package app.exceptions;
 
 public class MissingAtSymnolException extends RuntimeException{
 

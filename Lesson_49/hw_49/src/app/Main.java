@@ -13,11 +13,11 @@
 
 */
 
-package app1;
+package app;
 
-import app1.exceptions.InvalidEmailLengthException;
-import app1.exceptions.MissingAtSymnolException;
-import app1.exceptions.NotCorrectAtPlaceException;
+import app.exceptions.InvalidEmailLengthException;
+import app.exceptions.MissingAtSymnolException;
+import app.exceptions.NotCorrectAtPlaceException;
 
 import java.util.Scanner;
 
